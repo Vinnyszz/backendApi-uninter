@@ -1,15 +1,15 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const sequelize = require('./src/infrastructure/database/database');
-const { swaggerUi, specs } = require('./src/infrastructure/config/swagger');
+const sequelize = require('./infrastructure/database/database');
+const { swaggerUi, specs } = require('./infrastructure/config/swagger');
 
 // Importar models para sincronizar
-require('./src/domain/models');
+require('./domain/models');
 
 // Rotas
-const authRoutes = require('./src/api/routes/auth.routes');
-const pedidoRoutes = require('./src/api/routes/pedido.routes');
+const authRoutes = require('./api/routes/auth.routes');
+const pedidoRoutes = require('./api/routes/pedido.routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
