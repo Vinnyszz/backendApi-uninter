@@ -1,13 +1,40 @@
+require('dotenv').config();
 const express = require('express');
-const app = express();
+const cors = require('cors');
+const sequelize = require('./src/infrastructure/database/database');
+const { swaggerUi, specs } = require('./src/infrastructure/config/swagger');
 
+// Importar models para sincronizar
+require('./src/domain/models');
+
+// Rotas
+const authRoutes = require('./src/api/routes/auth.routes');
+const pedidoRoutes = require('./src/api/routes/pedido.routes');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middlewares
+app.use(cors());
 app.use(express.json());
 
+// Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
+// Rotas
+app.use('/auth', authRoutes);
+app.use('/pedidos', pedidoRoutes);
+
+// Rota de teste
 app.get('/', (req, res) => {
-  res.json({ message: "server funcionando" });
+  res.json({ message: 'API Lanchonete funcionando! Acesse /api-docs para documentação' });
 });
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+// Sincronizar banco e iniciar servidor
+sequelize.sync({ force: false }).then(() => {
+  console.log('✅ Banco de dados sincronizado');
+  app.listen(PORT, () => {
+    console.log(`🚀 Servidor rodando na porta ${PORT}`);
+    console.log(`📚 Documentação: http://localhost:${PORT}/api-docs`);
+  });
 });
