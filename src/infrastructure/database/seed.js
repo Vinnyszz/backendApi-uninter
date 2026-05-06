@@ -4,7 +4,7 @@ const { Usuario, Pedido, ItemPedido } = require('../../domain/models');
 async function seed() {
   try {
     await sequelize.sync({ force: true });
-    console.log('🗑️ Banco resetado');
+    console.log('Banco resetado');
 
     // Criar usuários
     const cliente = await Usuario.create({
@@ -21,13 +21,13 @@ async function seed() {
       perfil: 'GERENTE'
     });
 
-    console.log('✅ Usuários criados');
-    console.log('📧 Login Cliente: cliente@teste.com | Senha: Senha@123');
-    console.log('📧 Login Gerente: gerente@teste.com | Senha: Senha@123');
+    console.log('Usuários criados');
+    console.log('Login Cliente: cliente@teste.com | Senha: Senha@123');
+    console.log('Login Gerente: gerente@teste.com | Senha: Senha@123');
 
     process.exit(0);
   } catch (error) {
-    console.error('❌ Erro ao popular banco:', error);
+    console.error('Erro ao popular banco:', error);
     process.exit(1);
   }
 }

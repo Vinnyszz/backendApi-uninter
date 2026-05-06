@@ -23,12 +23,12 @@ class PedidoService {
       };
     }
 
-    // Calcular total (aqui simplificado - em produção buscaria preços do BD)
+    // Calcular total
     let total = 0;
     const itensPedido = [];
 
     for (const item of itens) {
-      const precoUnitario = 25.90; // Mock - em produção viria do produto
+      const precoUnitario = 25.90; // Mock 
       const subtotal = precoUnitario * item.quantidade;
       total += subtotal;
 

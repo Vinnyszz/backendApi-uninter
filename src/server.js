@@ -32,9 +32,9 @@ app.get('/', (req, res) => {
 
 // Sincronizar banco e iniciar servidor
 sequelize.sync({ force: false }).then(() => {
-  console.log('✅ Banco de dados sincronizado');
+  console.log('Banco de dados sincronizado');
   app.listen(PORT, () => {
-    console.log(`🚀 Servidor rodando na porta ${PORT}`);
-    console.log(`📚 Documentação: http://localhost:${PORT}/api-docs`);
+    console.log(`Servidor rodando na porta ${PORT}`);
+    console.log(`Documentação: http://localhost:${PORT}/api-docs`);
   });
 });
