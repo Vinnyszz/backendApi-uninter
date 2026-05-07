@@ -11,6 +11,11 @@ const Pedido = sequelize.define('Pedido', {
     type: DataTypes.INTEGER,
     allowNull: false
   },
+  unidadeId: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    comment: 'Unidade onde o pedido foi realizado'
+  },
   canalPedido: {
     type: DataTypes.ENUM('APP', 'TOTEM', 'BALCAO', 'WEB', 'PICKUP'),
     allowNull: false

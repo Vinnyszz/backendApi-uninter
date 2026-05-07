@@ -27,6 +27,11 @@ const Usuario = sequelize.define('Usuario', {
   perfil: {
     type: DataTypes.ENUM('CLIENTE', 'GERENTE', 'COZINHA', 'ADMIN'),
     defaultValue: 'CLIENTE'
+  }, 
+  consentimentoLGPD: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+    comment: 'Aceite dos termos de uso e política de privacidade'
   }
 }, {
   tableName: 'usuarios',
