@@ -10,6 +10,7 @@ require('./domain/models');
 // Rotas
 const authRoutes = require('./api/routes/auth.routes');
 const pedidoRoutes = require('./api/routes/pedido.routes');
+const produtoRoutes = require('./src/api/routes/produto.routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -24,6 +25,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 // Rotas
 app.use('/auth', authRoutes);
 app.use('/pedidos', pedidoRoutes);
+app.use('/produtos', produtoRoutes);
 
 // Rota de teste
 app.get('/', (req, res) => {
